@@ -1,10 +1,273 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title> REF^2-NeRF:Reflection and Refraction aware Neural Radiance Field </title>
-  </head>
-  <body>
-    test message
-  </body>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>REF^2-NeRF</title>
+		<!-- Bootstrap core CSS -->
+		
+		<!-- Custom styles for this template -->
+		<link href="css/academicons.css" rel="stylesheet">
+		<link rel="stylesheet" href="/dics.original.css">
+		<script src="/dics.original.js"></script>
+		<link href="css/footer.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="src/original/dics.original.css">
+		<link rel='stylesheet'
+         href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    	<script src="src/original/dics.original.js"></script>
+		<link
+		  rel="stylesheet" 
+		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+		  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+		  crossorigin="anonymous">
+		<!-- Custom fonts for this template -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<script>
+			document.addEventListener('DOMContentLoaded', domReady);
+	
+			function domReady() {
+				new Dics({
+					container: document.querySelectorAll('.b-dics')[0],
+					textPosition: 'top'
+				});
+	
+				new Dics({
+					container: document.querySelectorAll('.b-dics')[1],
+					hideTexts: true,
+					textPosition: 'center'
+				});
+	
+				new Dics({
+					container: document.querySelectorAll('.b-dics')[2]
+				});
+	
+				new Dics({
+					container: document.querySelectorAll('.b-dics')[3],
+					linesOrientation: 'vertical',
+					textPosition: 'left',
+					arrayBackgroundColorText: ['#000000', '#FFFFFF'],
+					arrayColorText: ['#FFFFFF', '#000000'],
+					linesColor: 'rgb(0,0,0)'
+				});
+	
+				new Dics({
+					container: document.querySelectorAll('.b-dics')[4],
+					linesOrientation: 'vertical',
+					textPosition: 'right'
+				});
+	
+				new Dics({
+					container: document.querySelectorAll('.b-dics')[5],
+					textPosition: 'bottom'
+				});
+	
+				new Dics({
+					container: document.querySelectorAll('.b-dics')[6],
+					filters: ['blur(3px)', 'grayscale(1)', 'sepia(1)', 'saturate(3)']
+				});
+				new Dics({
+					container: document.querySelectorAll('.b-dics')[7],
+					rotate: '45deg'
+				});
+	
+			}
+		</script>
+		<script type="text/javascript">
+			var x = 0;
+			var images = [
+				["figures/pm-lego.png",
+				"figures/ms-lego.png",
+				"figures/gt-lego.png"],
+				["figures/pm-ball.png",
+				"figures/ms-ball.png",
+				"figures/gt-ball.png"],
+				["figures/pm-house.png",
+				"figures/ms-house.png",
+				"figures/gt-house.png"],
+			];
+			function ChangeImage() {
+				x = Math.floor(Math.random() * images.length);
+              	document.getElementById("img1").src = images[x];
+			}
+			function displayNextImages() {
+              	x = (x === images.length - 1) ? 0 : x + 1;
+              	document.getElementById("img1").src = images[x][0];
+				document.getElementById("img2").src = images[x][1];
+				document.getElementById("img3").src = images[x][2];
+				document.getElementById("img4").src = images[x][3];
+          }
+
+			function displayPreviousImages() {
+				x = (x <= 0) ? images.length - 1 : x - 1;
+				document.getElementById("img1").src = images[x][0];
+				document.getElementById("img2").src = images[x][1];
+				document.getElementById("img3").src = images[x][2];
+				document.getElementById("img4").src = images[x][3];
+			}
+			function ChangeImages() {
+				x = Math.floor(Math.random() * images.length);
+              	document.getElementById("img1").src = images[x][0];
+				document.getElementById("img2").src = images[x][1];
+				document.getElementById("img3").src = images[x][2];
+				document.getElementById("img4").src = images[x][3];
+			}
+		</script>
+		
+	</head>
+<body>
+
+<main role="main" class="container", style="max-width: 900px;">
+	    <h1 class="title is-3 publication-title">REF^2-NeRF: Reflection and Refraction aware Neural Radiance Field</h1>
+	<!-- &#x1F6AB &#129306 &#128581 &#128581;&#8205;&#9792;&#65039 &#x1F6AB-->
+	<div class="col text-center">
+	    <p class="authors">
+		  Wooseok Kim,
+	      Taiki Fukiage, 
+		  Takeshi Oishi
+	    </p>
+	</div>
+	<div class="col text-center", style="padding: 20px 0px;">
+	    <a class="btn btn-dark", href="https://arxiv.org/abs/2311.17116" role="button">Paper</a>
+		<a class="btn btn-dark" href="#bibtex" role="button">Bibtex</a>
+		<a class="btn btn-dark", href="https://github.com/Woo-Seok-Kim/ref-square-NeRF" role="button">Code</a>
+		<a class="btn btn-dark", href="https://drive.google.com/drive/folders/11JuIU2H5ATJ2sbh5CVkEpJ_3P0VEl-RT?usp=drive_link" role="button">Dataset</a>
+	</div>
+	<div class="polaroid" style="padding-bottom: 40px">
+		<div style="padding: 0px 0px;", class="center">
+			<div class="b-dics" >
+				<img id="img3" src="figures/gt-ball.png" alt="Ground Truth">
+				<img id="img2" src="figures/ms-ball.png" alt="MS-NeRF">
+				<img id="img1" src="figures/pm-ball.png" alt="REF^2-NeRF">
+				<!-- <img id="img4" src="my_imgs/3m_m360.png" alt="REF^2-NeRF"> -->
+			</div>		
+		</div>
+
+		<div style="padding: 0px 0px;">
+		<!-- <button type="button" class="btn btn-outline-dark" onclick="ChangeImages()">Change</button> -->
+		<div class="pos_left" >
+		<button type="button" class="btn btn-outline-dark" onclick="displayPreviousImages()">&#10094 Previous</button>
+		</div>
+		<div class="pos_right">
+		<button type="button" class="btn btn-outline-dark" onclick="displayNextImages()">Next &#10095</button>
+		</div>
+	</div>
+	</div>
+	<h2 class="title is-4">Abstract</h2>
+	  <p>
+		Recently, significant progress has been made in the study of methods for 3D reconstruction from multiple images 
+		using implicit neural representations, exemplified by the neural radiance field (NeRF) method. 
+		Such methods, which are based on volume rendering, can model various light phenomena, and various extended methods 
+		have been proposed to accommodate different scenes and situations. However, when handling scenes with multiple glass objects, 
+		e.g., objects in a glass showcase, modeling the target scene accurately has been challenging due to the presence of multiple 
+		reflection and refraction effects. Thus, this paper proposes a NeRF-based modeling method for scenes containing a glass case. 
+		In the proposed method, refraction and reflection are modeled using elements that are dependent and independent of the viewer's 
+		perspective. This approach allows us to estimate the surfaces where refraction occurs, i.e., glass surfaces, and enables the 
+		separation and modeling of both direct and reflected light components. Compared to existing methods, the proposed method enables
+		 more accurate modeling of both glass refraction and the overall scene.
+	  </p>
+	<h2 class="title is-4">Method Pipeline</h2>
+	<div style="padding: 20px 0px;", class="center">
+	<img src="figures/overview.png" alt="Model Pipeline", class="center">
+	</div>
+	<p>
+		Glass network MLP models refraction occurred by transparent object and adjusted each sampled position. Then, we decompose the scene into view-dependent and view-independent components to separate reflection from input images and model both. 
+	</p>
+	<h2 class="title is-4">Novel View Rendering(Ground Truth & REF^2-NeRF)</h2>
+	<div class="row">
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/house_gt.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+			</video>
+		</div>
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/house_proposed.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</div>
+	</div>
+	<div class="row">
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/ball_gt.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+			</video>
+		</div>
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/ball_proposed.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</div>
+	</div>
+	<h2 class="title is-4">Scene decomposition</h2>
+	<div class="row">
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/house_vi.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+			</video>
+		</div>
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/house_vd.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</div>
+	</div>
+	<div class="row">
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/ball_vi.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+			</video>
+		</div>
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/ball_vd.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</div>
+	</div>
+	<h2 class="title is-4">Depth(View-independent)</h2>
+	<div class="row">
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/house_vi_depth.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+			</video>
+		</div>
+		<div class="column">
+			<video class='center_video' controls autoplay muted loop>
+			<source src="videos/ball_vi_depth.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</div>
+	</div>
+	
+	<!--
+	<h2 class="title is-4">Full Video</h2>
+	<iframe style='width:100%; height:500px;' src="https://www.youtube.com/embed/GpSuBh5xRrE" title="YouTube video player" 
+	frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+	encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	-->
+<h2 class="title is-4">BibTeX</h2>
+<code class="codebox" id="bibtex"><pre>
+	@misc{kim2023ref2nerf,
+		title={REF$^2$-NeRF: Reflection and Refraction aware Neural Radiance Field}, 
+		author={Wooseok Kim and Taiki Fukiage and Takeshi Oishi},
+		year={2023},
+		eprint={2311.17116},
+		archivePrefix={arXiv},
+		primaryClass={cs.CV}
+  }
+   
+</pre></code>
+	<h2 class="title is-4">Acknowledgement</h2>
+	  <p, style="padding: 50px 0px;">
+		We borrow this website's template from <a href="https://zx-yin.github.io/msnerf/">MS-NeRF</a>.
+	  </p>
+
+</main>
+</body>
+	
 </html>
